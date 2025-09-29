@@ -1,5 +1,7 @@
-import { Injectable, signal } from "@angular/core";
-import { delay, of } from "rxjs";
+import { Injectable } from "@angular/core";
+import { Observable, of } from "rxjs";
+import { USER_PROFILE_STORAGE_KEY } from "../../../shared/constant/constant";
+import { UserProfileStore } from "../../user-profile/store/user-profile.store";
 
 export interface AuthUser {
   id: string;
@@ -9,25 +11,26 @@ export interface AuthUser {
 
 @Injectable({ providedIn: "root" })
 export class AuthenticationService {
-  readonly isLoading = signal<boolean>(false);
-  readonly currentUser = signal<AuthUser | null>(null);
+  constructor(private userProfileStore: UserProfileStore) {}
 
-  login(email: string, _password: string) {
-    this.isLoading.set(true);
-    return of({ id: "1", name: "Demo User", email }).pipe(delay(600));
-  }
-
-  signup(name: string, email: string, _password: string) {
-    this.isLoading.set(true);
-    return of({ id: "1", name, email }).pipe(delay(800));
-  }
-
-  setUser(user: AuthUser | null) {
-    this.currentUser.set(user);
-    this.isLoading.set(false);
-  }
-
-  logout() {
-    this.currentUser.set(null);
+  login(email: string, password: string, rememberMe: boolean): Observable<any> {
+    const existingUserProfile = this.userProfileStore.existingUserProfile();
+    const userProfile = existingUserProfile?.find(
+      user => user.email === email && user.password === password
+    );
+    if (userProfile) {
+      this.userProfileStore.setUserProfile(userProfile);
+      rememberMe
+        ? localStorage.setItem(
+            USER_PROFILE_STORAGE_KEY,
+            JSON.stringify(userProfile)
+          )
+        : sessionStorage.setItem(
+            USER_PROFILE_STORAGE_KEY,
+            JSON.stringify(userProfile)
+          );
+      return of(true);
+    }
+    return of(false);
   }
 }
