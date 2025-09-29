@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { UserProfileStore } from "./store/user-profile.store";
 
 @Component({
   selector: "app-user-profile",
@@ -7,4 +8,6 @@ import { Component } from "@angular/core";
   templateUrl: "./user-profile.component.html",
   styleUrls: ["./user-profile.component.scss"]
 })
-export class UserProfileComponent {}
+export class UserProfileComponent {
+  constructor(public userProfileStore: UserProfileStore) {}
+}

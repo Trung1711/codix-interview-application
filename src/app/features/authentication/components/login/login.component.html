@@ -1,1 +1,15 @@
 <p>login</p>
+<p-button [routerLink]="['/authentication/signup']">Go to signup</p-button>
+
+<form [formGroup]="loginForm" class="flex flex-col gap-4">
+  <div>
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" pInputText />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <p-password id="password" formControlName="password" [toggleMask]="true" />
+  </div>
+  <p-checkbox id="rememberMe" [formControl]="rememberMe" />
+  <p-button type="submit" (onClick)="onSubmit()">Submit</p-button>
+</form>
