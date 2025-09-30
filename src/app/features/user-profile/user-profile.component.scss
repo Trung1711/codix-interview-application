@@ -1,1 +1,9 @@
-/* Styles cho trang User Profile (dùng Tailwind nên để trống nếu không cần) */
+.user-profile-container {
+  .p-button.p-button-outlined {
+    @apply min-w-[150px];
+  }
+
+  .p-avatar {
+    @apply w-[250px] h-[300px];
+  }
+}

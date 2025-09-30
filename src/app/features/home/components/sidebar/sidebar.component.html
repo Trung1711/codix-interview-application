@@ -1,0 +1,28 @@
+<div class="bg-white w-[300px] h-full border-r border-gray-200 p-4">
+  <nav class="space-y-2">
+    @for (item of sidebarItems; track item.value) {
+      <div
+        class="flex items-center gap-3 px-4 py-3 cursor-pointer transition-colors"
+        [class]="
+          commonStore.selectedTab() === item.value
+            ? 'bg-gray-100 text-primary-100'
+            : 'hover:bg-gray-100 text-black'
+        "
+        (click)="navigateToUserProfile()"
+      >
+        <i
+          class="pi"
+          [class]="item.icon"
+          [class.text-primary-100]="commonStore.selectedTab() === item.value"
+          [class.text-black]="commonStore.selectedTab() !== item.value"
+        ></i>
+        <span
+          [class.text-primary-100]="commonStore.selectedTab() === item.value"
+          [class.text-black]="commonStore.selectedTab() !== item.value"
+        >
+          {{ item.label }}
+        </span>
+      </div>
+    }
+  </nav>
+</div>

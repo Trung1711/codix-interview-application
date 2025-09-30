@@ -10,13 +10,12 @@ export const authGuard: CanActivateFn = (_route, state) => {
   const url = state.url || "";
 
   const isAuthSection = url.startsWith("/authentication");
-  const isProfileSection = url.startsWith("/user-profile");
 
   if (user && isAuthSection) {
-    return router.createUrlTree(["/user-profile"]);
+    return router.createUrlTree(["/home"]);
   }
 
-  if (!user && isProfileSection) {
+  if (!user) {
     return router.createUrlTree(["/authentication"]);
   }
 

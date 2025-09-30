@@ -1,3 +1,49 @@
-<p>authentication</p>
+<div class="authentication-container">
+  <div class="relative bg-white w-screen h-screen flex overflow-hidden">
+    <div class="w-1/2 h-full flex items-center justify-center">
+      <app-auth-login></app-auth-login>
+    </div>
+    <div class="w-1/2 h-full flex items-center justify-center">
+      <app-auth-signup></app-auth-signup>
+    </div>
+  </div>
 
-<router-outlet />
+  <div
+    class="trapezoid-overlay absolute top-0 left-0 h-full flex items-center justify-center bg-primary-100 transition-all duration-700 ease-in-out"
+    [ngClass]="
+      selectedTab() === authenticationTabs.LOGIN
+        ? 'trapezoid-left'
+        : 'trapezoid-right translate-x-full'
+    "
+  >
+    <div
+      class="flex flex-col gap-6 items-center justify-center h-full max-w-[400px]"
+    >
+      @if (selectedTab() === authenticationTabs.LOGIN) {
+        <span class="text-3xl font-bold">Don't have an account yet?</span>
+        <span class="text-center"
+          >Let's get you all set up so you can start creating your first
+          onboarding experience.</span
+        >
+
+        <p-button
+          [label]="'SIGN UP'"
+          [outlined]="true"
+          (onClick)="selectedTab.set(authenticationTabs.SIGNUP)"
+        />
+      } @else {
+        <span class="text-3xl font-bold">Already Signed up?</span>
+        <span class="text-center"
+          >Log in to your account so you can continue building and editing your
+          onboarding flows.</span
+        >
+
+        <p-button
+          [label]="'LOG IN'"
+          [outlined]="true"
+          (onClick)="selectedTab.set(authenticationTabs.LOGIN)"
+        />
+      }
+    </div>
+  </div>
+</div>

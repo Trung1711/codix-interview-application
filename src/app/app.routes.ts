@@ -5,19 +5,24 @@ export const routes: Routes = [
   { path: "", redirectTo: "authentication", pathMatch: "full" },
   {
     path: "authentication",
+    canActivate: [authGuard],
     loadChildren: () =>
       import("./features/authentication/authentication.routes").then(
         m => m.AUTHENTICATION_ROUTES
-      ),
-    canActivate: [authGuard]
+      )
   },
   {
-    path: "user-profile",
-    loadChildren: () =>
-      import("./features/user-profile/user-profile.routes").then(
-        m => m.USER_PROFILE_ROUTES
-      ),
-    canActivate: [authGuard]
+    path: "home",
+    loadComponent: () =>
+      import("./features/home/home.component").then(m => m.HomeComponent),
+    canActivate: [authGuard],
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./features/home/home.routes").then(m => m.HOME_ROUTES)
+      }
+    ]
   },
   {
     path: "**",

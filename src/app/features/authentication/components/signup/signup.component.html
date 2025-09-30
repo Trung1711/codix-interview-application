@@ -1,31 +1,81 @@
-<form [formGroup]="registrationForm" class="flex flex-col gap-4">
-  <div>
-    <label for="nickname">Nickname</label>
-    <input id="nickname" formControlName="nickname" pInputText />
-  </div>
-  <div>
-    <label for="email">Email</label>
-    <input id="email" formControlName="email" pInputText />
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <p-password id="password" formControlName="password" [toggleMask]="true" />
-  </div>
-  <div>
-    <label for="confirmPassword">Confirm Password</label>
-    <p-password
+<div class="flex flex-col items-center justify-center gap-4 max-w-[300px]">
+  <img src="assets/logo/codix-logo.png" alt="logo" class="w-full h-[60px]" />
+  <span class="text-2xl font-bold text-black">Sign Up</span>
+
+  <span class="text-sm text-gray-400 text-center">
+    Create your account to start building and editing your onboarding flows.
+  </span>
+
+  <form
+    [formGroup]="registrationForm"
+    class="signup-container h-full w-full max-w-[300px] min-w-[300px] flex flex-col gap-2 items-center justify-center"
+  >
+    <app-smart-input
+      id="nickname"
+      label="Nickname"
+      [control]="registrationForm.get('nickname')!"
+      type="text"
+      class="w-full"
+      placeholder="Enter your nickname"
+    ></app-smart-input>
+
+    <app-smart-input
+      id="email"
+      label="Email"
+      [control]="registrationForm.get('email')!"
+      type="text"
+      class="w-full"
+      placeholder="Enter your email"
+    ></app-smart-input>
+
+    <app-smart-input
+      id="password"
+      label="Password"
+      [control]="registrationForm.get('password')!"
+      type="password"
+      class="w-full"
+      placeholder="Enter your password"
+    ></app-smart-input>
+
+    <app-smart-input
       id="confirmPassword"
-      formControlName="confirmPassword"
-      [toggleMask]="true"
-    />
-  </div>
-  <div>
-    <label for="phone">Phone</label>
-    <input id="phone" formControlName="phone" pInputText />
-  </div>
-  <div>
-    <label for="country">Country</label>
-    <input id="country" formControlName="country" pInputText />
-  </div>
-  <p-button type="submit" (onClick)="onSubmit()">Submit</p-button>
-</form>
+      label="Confirm Password"
+      [control]="registrationForm.get('confirmPassword')!"
+      [formGroup]="registrationForm"
+      [formGroupErrors]="['passwordMismatch']"
+      type="password"
+      class="w-full"
+      placeholder="Confirm your password"
+    ></app-smart-input>
+
+    <div class="flex flex-col gap-1 w-full">
+      <label for="country">Country</label>
+      <p-select
+        id="country"
+        formControlName="country"
+        [options]="countries"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select a country"
+      />
+    </div>
+
+    <app-smart-input
+      id="phone"
+      label="Phone"
+      [control]="registrationForm.get('phone')!"
+      type="text"
+      class="w-full"
+      placeholder="Enter your phone number"
+    ></app-smart-input>
+
+    <p-button
+      type="submit"
+      class="w-full mt-2 text-base font-medium"
+      (onClick)="onSubmit()"
+      [disabled]="registrationForm.invalid"
+      [loading]="loading"
+      label="SIGN UP"
+    ></p-button>
+  </form>
+</div>

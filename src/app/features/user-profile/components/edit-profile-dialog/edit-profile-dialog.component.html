@@ -1,0 +1,86 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [dismissableMask]="false"
+  [style]="{ width: '500px' }"
+  (onHide)="close()"
+  [draggable]="false"
+  class="edit-profile-dialog"
+>
+  <ng-template #header>
+    <div class="flex items-center justify-between w-full">
+      <span class="text-black text-lg font-semibold">Edit Profile</span>
+      <i class="pi pi-times text-black cursor-pointer" (click)="close()"></i>
+    </div>
+  </ng-template>
+
+  <form [formGroup]="form" class="flex flex-col gap-3">
+    <div class="flex items-center gap-3">
+      <label class="w-36 text-black font-medium" for="nickname">Nickname</label>
+      <app-smart-input
+        id="nickname"
+        label="Nickname"
+        [control]="form.get('nickname')!"
+        [showLabel]="false"
+        type="text"
+        placeholder="Enter your nickname"
+        class="flex-1"
+      ></app-smart-input>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <label class="w-36 text-black font-medium" for="phone">Phone</label>
+      <app-smart-input
+        id="phone"
+        label="Phone"
+        [control]="form.get('phone')!"
+        [showLabel]="false"
+        type="text"
+        placeholder="Enter your phone number"
+        class="flex-1"
+      ></app-smart-input>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <label class="w-36 text-black font-medium" for="country">Country</label>
+      <p-select
+        id="country"
+        class="flex-1"
+        formControlName="country"
+        [options]="countries"
+        [appendTo]="'body'"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select a country"
+      />
+    </div>
+
+    <div class="flex items-center gap-3">
+      <label class="w-36 text-black font-medium" for="password">Password</label>
+      <app-smart-input
+        id="password"
+        label="Password"
+        [control]="form.get('password')!"
+        [showLabel]="false"
+        type="password"
+        placeholder="Enter your password"
+        class="flex-1"
+      ></app-smart-input>
+    </div>
+  </form>
+
+  <ng-template #footer>
+    <div class="flex justify-end gap-4 items-center">
+      <span
+        class="text-base text-black font-medium cursor-pointer"
+        (click)="close()"
+        >Cancel</span
+      >
+      <p-button
+        label="Save"
+        [disabled]="form.invalid"
+        (onClick)="onSubmit()"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-dialog>

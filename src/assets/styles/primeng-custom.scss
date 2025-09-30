@@ -1,0 +1,138 @@
+/* Global component styling for PrimeNG */
+body {
+  label {
+    @apply text-black text-sm;
+  }
+
+  small {
+    color: var(--text-color-error);
+    font-size: 12px;
+  }
+
+  .p-component {
+    border-radius: var(--border-radius);
+  }
+
+  .p-button {
+    background: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--button-bg) !important;
+    border-radius: var(--border-radius);
+
+    &:hover {
+      background: var(--button-hover-bg) !important;
+      color: var(--button-hover-text) !important;
+      border-color: none !important;
+    }
+
+    &:focus {
+      box-shadow: var(--button-focus-shadow);
+    }
+
+    &.p-button-outlined {
+      background: var(--button-outlined-bg);
+      color: var(--button-outlined-text);
+      border-color: var(--button-outlined-border) !important;
+
+      &:hover {
+        background: var(--button-outlined-hover-bg);
+        color: var(--button-outlined-hover-text);
+        border-color: var(--button-outlined-hover-border);
+      }
+    }
+  }
+
+  .p-dialog {
+    background: var(--dialog-bg);
+  }
+
+  .p-inputtext {
+    background: var(--input-bg);
+    color: var(--input-text);
+    border-color: var(--input-border);
+    border-radius: var(--border-radius);
+
+    &:hover {
+      border-color: var(--input-hover-border);
+    }
+
+    &:focus {
+      border-color: var(--input-focus-border) !important;
+      box-shadow: var(--input-focus-shadow);
+    }
+
+    // Override autofill styles - keep text visible but maintain white background
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px white inset !important;
+      background-color: white !important;
+      -webkit-text-fill-color: var(--input-text) !important;
+    }
+
+    // Override internal autofill selected
+    &:internal-autofill-selected {
+      background-color: white !important;
+      -webkit-text-fill-color: var(--input-text) !important;
+    }
+  }
+
+  .p-password {
+    .p-inputtext {
+      // Override autofill styles for password inputs - keep text visible
+      &:-webkit-autofill,
+      &:-webkit-autofill:hover,
+      &:-webkit-autofill:focus,
+      &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+        background-color: white !important;
+        -webkit-text-fill-color: var(--input-text) !important;
+      }
+
+      // Override internal autofill selected for password
+      &:internal-autofill-selected {
+        background-color: white !important;
+        -webkit-text-fill-color: var(--input-text) !important;
+      }
+    }
+  }
+
+  .p-checkbox {
+    .p-checkbox-box {
+      background: var(--checkbox-bg);
+      border-color: var(--checkbox-border);
+
+      &.p-highlight {
+        background: var(--checkbox-active-bg);
+        border-color: var(--checkbox-active-border);
+      }
+    }
+  }
+
+  .p-select {
+    background: var(--dropdown-bg);
+    border-color: var(--dropdown-border);
+
+    .p-select-label {
+      color: var(--dropdown-text);
+    }
+
+    .p-select-item {
+      padding: var(--dropdown-item-padding);
+
+      &:hover {
+        background: var(--dropdown-hover-bg);
+        color: var(--dropdown-hover-text);
+      }
+    }
+  }
+
+  .p-card {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border: 1px solid var(--card-border);
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow);
+  }
+}

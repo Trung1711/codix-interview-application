@@ -5,4 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PrimeNG 18 - Aura theme is configured via providePrimeNG in app.config.ts */
+/* PrimeNG Icons */
+@import "primeicons/primeicons.css";
+
+/* Import custom theme variables and PrimeNG overrides */
+@import "assets/styles/variables.scss";
+@import "assets/styles/primeng-custom.scss";

@@ -1,1 +1,18 @@
-/* Styles cho trang Authentication (dùng Tailwind nên để trống nếu không cần) */
+.authentication-container {
+  .trapezoid-overlay {
+    width: 45%;
+  }
+
+  .trapezoid-left {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  }
+
+  .trapezoid-right {
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    transform: translateX(calc(100vw - 100%)) !important;
+  }
+
+  .p-button.p-button-outlined {
+    @apply min-w-[200px];
+  }
+}
