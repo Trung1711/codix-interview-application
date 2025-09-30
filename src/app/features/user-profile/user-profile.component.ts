@@ -26,6 +26,4 @@ export class UserProfileComponent {
 
   showEditProfileDialog = signal(false);
   countriesMap: Record<string, string> = COUNTRIES_MAP;
-
-  // Removed userAvatar getter - using firstChar pipe instead
 }

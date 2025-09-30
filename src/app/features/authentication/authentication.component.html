@@ -20,18 +20,6 @@
       class="flex flex-col gap-6 items-center justify-center h-full max-w-[400px]"
     >
       @if (selectedTab() === authenticationTabs.LOGIN) {
-        <span class="text-3xl font-bold">Don't have an account yet?</span>
-        <span class="text-center"
-          >Let's get you all set up so you can start creating your first
-          onboarding experience.</span
-        >
-
-        <p-button
-          [label]="'SIGN UP'"
-          [outlined]="true"
-          (onClick)="selectedTab.set(authenticationTabs.SIGNUP)"
-        />
-      } @else {
         <span class="text-3xl font-bold">Already Signed up?</span>
         <span class="text-center"
           >Log in to your account so you can continue building and editing your
@@ -40,6 +28,18 @@
 
         <p-button
           [label]="'LOG IN'"
+          [outlined]="true"
+          (onClick)="selectedTab.set(authenticationTabs.SIGNUP)"
+        />
+      } @else {
+        <span class="text-3xl font-bold">Don't have an account yet?</span>
+        <span class="text-center"
+          >Let's get you all set up so you can start creating your first
+          onboarding experience.</span
+        >
+
+        <p-button
+          [label]="'SIGN UP'"
           [outlined]="true"
           (onClick)="selectedTab.set(authenticationTabs.LOGIN)"
         />
