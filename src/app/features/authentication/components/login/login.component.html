@@ -1,15 +1,49 @@
-<p>login</p>
-<p-button [routerLink]="['/authentication/signup']">Go to signup</p-button>
+<div class="flex flex-col items-center justify-center gap-5 max-w-[300px]">
+  <img src="assets/logo/codix-logo.png" alt="logo" class="w-full h-[60px]" />
+  <span class="text-2xl font-bold text-black">Login</span>
 
-<form [formGroup]="loginForm" class="flex flex-col gap-4">
-  <div>
-    <label for="email">Email</label>
-    <input id="email" formControlName="email" pInputText />
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <p-password id="password" formControlName="password" [toggleMask]="true" />
-  </div>
-  <p-checkbox id="rememberMe" [formControl]="rememberMe" />
-  <p-button type="submit" (onClick)="onSubmit()">Submit</p-button>
-</form>
+  <span class="text-sm text-gray-400 text-center">
+    Login to your account to continue building and editing your onboarding
+    flows.
+  </span>
+
+  <form
+    [formGroup]="loginForm"
+    class="login-container mt-5 h-full w-full min-w-[300px] flex flex-col gap-5 items-center justify-center"
+  >
+    <app-smart-input
+      id="email"
+      label="Email"
+      [control]="loginForm.get('email')!"
+      type="text"
+      placeholder="Enter your email"
+      class="w-full"
+    ></app-smart-input>
+
+    <app-smart-input
+      id="password"
+      class="w-full"
+      label="Password"
+      [control]="loginForm.get('password')!"
+      type="password"
+      placeholder="Enter your password"
+    ></app-smart-input>
+
+    <div class="flex items-center self-start gap-2">
+      <p-checkbox
+        inputId="rememberMe"
+        [formControl]="rememberMe"
+        [binary]="true"
+      />
+      <label for="rememberMe" class="text-sm mt-[2px]"> Remember me </label>
+    </div>
+    <p-button
+      type="submit"
+      class="w-full text-base font-medium"
+      (onClick)="onSubmit()"
+      [disabled]="loginForm.invalid"
+      [loading]="loading"
+      label="LOG IN"
+    ></p-button>
+  </form>
+</div>

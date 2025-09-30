@@ -1,0 +1,17 @@
+/* Dùng Tailwind cho layout, có thể để trống */
+.edit-profile-dialog {
+  .p-dialog-header {
+    @apply bg-gray-300 rounded-t-lg;
+    .p-dialog-close-button {
+      @apply hidden;
+    }
+  }
+
+  .p-dialog-content {
+    @apply pt-4;
+  }
+
+  .p-dialog-footer {
+    @apply bg-gray-300 rounded-b-lg pt-4;
+  }
+}

@@ -1,0 +1,31 @@
+<div
+  *ngIf="userProfileStore.userProfile() as userProfile"
+  class="bg-white h-[80px] w-full border-b border-gray-200 flex items-center justify-between px-6"
+>
+  <img src="assets/logo/codix-logo.png" alt="logo" class="h-8" />
+
+  <div class="flex items-center gap-4 mr-4">
+    <div
+      class="flex items-center gap-2 cursor-pointer"
+      (click)="op.toggle($event)"
+    >
+      <span class="text-sm text-black font-medium">{{
+        userProfile?.nickname
+      }}</span>
+      <i class="pi pi-chevron-down text-xs text-black"></i>
+      <p-popover #op styleClass="p-popover-custom">
+        <div class="bg-white w-[100px] h-[100px] p-2 flex flex-col gap-2">
+          <div
+            class="flex gap-2 items-center cursor-pointer hover:bg-gray-400"
+            (click)="logout()"
+          >
+            <i class="pi pi-sign-out text-sm text-black"></i>
+            <span class="text-sm text-black">Log out</span>
+          </div>
+        </div>
+      </p-popover>
+    </div>
+
+    <p-avatar [label]="userAvatar" size="normal" shape="circle" />
+  </div>
+</div>

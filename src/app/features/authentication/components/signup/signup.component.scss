@@ -1,1 +1,18 @@
 /* Sử dụng Tailwind cho layout; thêm style tùy chỉnh nếu cần */
+.signup-container {
+  .p-inputtext {
+    @apply h-10;
+  }
+  .p-password {
+    @apply w-full;
+  }
+  .p-password-input {
+    @apply w-full;
+  }
+  .p-button {
+    @apply w-full;
+  }
+  .p-select-label {
+    @apply text-sm;
+  }
+}

@@ -1,9 +1,7 @@
 <p>page-not-found works!</p>
 
 @if (userProfileStore.userProfile()) {
-  <p-button (onClick)="router.navigate(['/user-profile'])"
-    >Go to user profile</p-button
-  >
+  <p-button (onClick)="router.navigate(['/home'])">Go to home page</p-button>
 } @else {
   <p-button (onClick)="router.navigate(['/authentication'])"
     >Go to authentication</p-button

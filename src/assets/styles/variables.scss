@@ -1,0 +1,57 @@
+/* PrimeNG Custom Theme Variables */
+:root {
+  /* Common */
+  --primary-color: #3597d5;
+  --primary-color-hover: #2b7db1;
+  --text-color: #333333;
+  --text-color-secondary: #6c757d;
+  --border-radius: 0.5rem;
+  --text-color-label: black;
+  --text-color-error: #dc2627;
+  --dialog-bg: #ffffff;
+  /* Button */
+  --button-bg: var(--primary-color);
+  --button-text: #ffffff;
+  --button-border: var(--primary-color);
+  --button-hover-bg: var(--primary-color-hover);
+  --button-hover-text: #ffffff;
+  --button-hover-border: var(--primary-color-hover);
+  --button-focus-shadow: 0 0 0 0.2rem rgba(53, 151, 213, 0.25);
+
+  /* Button Outlined */
+  --button-outlined-bg: var(--primary-color);
+  --button-outlined-text: #ffffff;
+  --button-outlined-border: #ffffff;
+  --button-outlined-hover-bg: var(--primary-color-hover);
+  --button-outlined-hover-text: #ffffff;
+  --button-outlined-hover-border: #ffffff;
+
+  /* Input */
+  --input-bg: #ffffff;
+  --input-text: var(--text-color);
+  --input-border: #ced4da;
+  --input-hover-border: var(--primary-color);
+  --input-focus-border: var(--primary-color);
+  --input-focus-shadow: 0 0 0 0.2rem rgba(53, 151, 213, 0.25);
+
+  /* Checkbox */
+  --checkbox-bg: #ffffff;
+  --checkbox-border: #ced4da;
+  --checkbox-active-bg: var(--primary-color);
+  --checkbox-active-border: var(--primary-color);
+
+  /* Dropdown */
+  --dropdown-bg: #ffffff;
+  --dropdown-text: var(--text-color);
+  --dropdown-border: #ced4da;
+  --dropdown-hover-bg: #f8f9fa;
+  --dropdown-hover-text: var(--primary-color);
+  --dropdown-item-padding: 0.75rem 1.25rem;
+
+  /* Card */
+  --card-bg: #ffffff;
+  --card-text: var(--text-color);
+  --card-border: #e9ecef;
+  --card-padding: 1.5rem;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

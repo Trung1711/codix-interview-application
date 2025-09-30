@@ -1,0 +1,32 @@
+<div class="smart-input-container flex flex-col gap-1 w-full h-full">
+  @if (showLabel) {
+    <label [for]="id">{{ label }}</label>
+  }
+  <!-- Text input -->
+  @if (type === "text") {
+    <input
+      [id]="id"
+      [formControl]="control"
+      pInputText
+      [placeholder]="placeholder"
+      class="placeholder:text-xs"
+      (onInput)="onInputChange()"
+    />
+  }
+
+  <!-- Password input -->
+  @if (type === "password") {
+    <p-password
+      [id]="id"
+      [formControl]="control"
+      [toggleMask]="true"
+      [feedback]="false"
+      [placeholder]="placeholder"
+      [inputStyleClass]="'placeholder:text-xs'"
+      (onInput)="onInputChange()"
+    ></p-password>
+  }
+
+  <!-- Error message -->
+  <small *ngIf="hasError()">{{ getErrorMessage() }}</small>
+</div>

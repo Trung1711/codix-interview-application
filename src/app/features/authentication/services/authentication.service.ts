@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { delay, Observable, of } from "rxjs";
 import { USER_PROFILE_STORAGE_KEY } from "../../../shared/constant/constant";
+import { UserProfile } from "../../user-profile/models/user-profile.model";
 import { UserProfileStore } from "../../user-profile/store/user-profile.store";
 
 export interface AuthUser {
@@ -29,8 +30,14 @@ export class AuthenticationService {
             USER_PROFILE_STORAGE_KEY,
             JSON.stringify(userProfile)
           );
-      return of(true);
+      return of(true).pipe(delay(2000));
     }
-    return of(false);
+    return of(false).pipe(delay(2000));
+  }
+
+  signup(userProfile: UserProfile): Observable<any> {
+    this.userProfileStore.setUserProfile(userProfile);
+    this.userProfileStore.addProfile(userProfile);
+    return of(true).pipe(delay(2000));
   }
 }
