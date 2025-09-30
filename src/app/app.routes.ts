@@ -5,11 +5,11 @@ export const routes: Routes = [
   { path: "", redirectTo: "authentication", pathMatch: "full" },
   {
     path: "authentication",
-    canActivate: [authGuard],
     loadChildren: () =>
       import("./features/authentication/authentication.routes").then(
         m => m.AUTHENTICATION_ROUTES
-      )
+      ),
+    canActivate: [authGuard]
   },
   {
     path: "home",
